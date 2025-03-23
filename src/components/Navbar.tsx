@@ -35,6 +35,7 @@ const Navbar = () => {
         <nav className="hidden md:flex items-center gap-8">
           <a href="#services" className="nav-link">Services</a>
           <a href="#projects" className="nav-link">Projects</a>
+          <a href="#location" className="nav-link">Location</a>
           <a href="#about" className="nav-link">About</a>
           <a href="#contact" className="nav-link">Contact</a>
         </nav>
@@ -74,6 +75,13 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Projects
+            </a>
+            <a 
+              href="#location" 
+              className="nav-link text-2xl"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Location
             </a>
             <a 
               href="#about" 

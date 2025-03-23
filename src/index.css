@@ -150,3 +150,24 @@
   opacity: 0;
   transition: opacity 250ms ease-in-out;
 }
+
+/* Mapbox custom styles */
+.mapboxgl-popup {
+  z-index: 1;
+}
+
+.mapboxgl-popup-content {
+  @apply rounded-md shadow-md px-4 py-3 bg-background/95 backdrop-blur-sm border border-border/50;
+}
+
+.mapboxgl-popup-close-button {
+  @apply text-muted-foreground hover:text-foreground;
+}
+
+.mapboxgl-popup-tip {
+  @apply border-t-background/95;
+}
+
+.mapboxgl-ctrl-logo {
+  @apply opacity-75;
+}
