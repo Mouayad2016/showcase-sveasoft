@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X, ShoppingCart } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { useCart } from '@/contexts/CartContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [cartItems, setCartItems] = useState<number>(0);
+  const { cartCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,12 +50,12 @@ const Navbar = () => {
             aria-label="Shopping cart"
           >
             <ShoppingCart className="h-5 w-5" />
-            {cartItems > 0 && (
+            {cartCount > 0 && (
               <Badge 
                 className="absolute -top-1 -right-1 h-5 w-5 p-0 flex items-center justify-center text-xs"
                 variant="default"
               >
-                {cartItems}
+                {cartCount}
               </Badge>
             )}
           </button>
@@ -130,12 +131,12 @@ const Navbar = () => {
                 aria-label="Shopping cart"
               >
                 <ShoppingCart className="h-6 w-6" />
-                {cartItems > 0 && (
+                {cartCount > 0 && (
                   <Badge 
                     className="absolute -top-1 -right-1 h-5 w-5 p-0 flex items-center justify-center text-xs"
                     variant="default"
                   >
-                    {cartItems}
+                    {cartCount}
                   </Badge>
                 )}
               </button>

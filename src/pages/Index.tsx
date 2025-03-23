@@ -8,6 +8,7 @@ import ConsultingServices from '@/components/ConsultingServices';
 import Map from '@/components/Map';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import { CartProvider } from '@/contexts/CartContext';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,29 +23,31 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {isLoading ? (
-        <div className="fixed inset-0 bg-background flex items-center justify-center z-50">
-          <div className="text-center">
-            <div className="inline-block w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin mb-4"></div>
-            <p className="text-foreground/70">Loading experience...</p>
+    <CartProvider>
+      <div className="min-h-screen flex flex-col">
+        {isLoading ? (
+          <div className="fixed inset-0 bg-background flex items-center justify-center z-50">
+            <div className="text-center">
+              <div className="inline-block w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin mb-4"></div>
+              <p className="text-foreground/70">Loading experience...</p>
+            </div>
           </div>
-        </div>
-      ) : (
-        <>
-          <Navbar />
-          <main>
-            <Hero />
-            <Services />
-            <Projects />
-            <ConsultingServices />
-            <Map />
-            <Contact />
-          </main>
-          <Footer />
-        </>
-      )}
-    </div>
+        ) : (
+          <>
+            <Navbar />
+            <main>
+              <Hero />
+              <Services />
+              <Projects />
+              <ConsultingServices />
+              <Map />
+              <Contact />
+            </main>
+            <Footer />
+          </>
+        )}
+      </div>
+    </CartProvider>
   );
 };
 

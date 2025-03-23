@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { CheckCircle, Clock, Calendar, ShoppingCart, CheckCheck, Zap } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
+import { useCart } from '@/contexts/CartContext';
 
 type ConsultingPackage = {
   id: string;
@@ -67,11 +68,11 @@ const packages: ConsultingPackage[] = [
 
 const ConsultingServices = () => {
   const [selectedPackage, setSelectedPackage] = useState<string>('professional');
-  const [cartItems, setCartItems] = useState<string[]>([]);
   const { toast } = useToast();
+  const { addToCart, cartItems } = useCart();
 
   const handleAddToCart = (packageId: string) => {
-    setCartItems([...cartItems, packageId]);
+    addToCart(packageId);
     toast({
       title: "Added to cart",
       description: "Your consulting package has been added to your cart",
